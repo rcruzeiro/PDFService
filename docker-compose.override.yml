@@ -1,0 +1,33 @@
+version: '3.4'
+
+services:
+  database:
+    image: mysql:5.7
+    container_name: mysqldb_pdfservice
+    environment:
+      - "VIRTUAL_HOST=db.pdfservice.dev"
+      - "MYSQL_DATABASE=pdfservice"
+      - "MYSQL_USER=pdfservice"
+      - "MYSQL_PASSWORD=secret"
+      - "MYSQL_ROOT_PASSWORD=secret"
+    ports:
+      - 4306:3306
+    volumes:
+      - data:/var/lib/mysql
+  redis:
+    image: redis
+    container_name: redisdb_pdfservice
+    ports:
+      - 6379:6379
+  pdfservice.api:
+    container_name: pdfservice.api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8080
+      - DB_CONNECTION=Default
+    ports:
+      - 8080:8080
+    links:
+      - redis
+volumes:
+  data:

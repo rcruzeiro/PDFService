@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PDFService.Repository\PDFService.Repository.csproj" />
+    <ProjectReference Include="..\PDFService.Repository.MySQL\PDFService.Repository.MySQL.csproj" />
+    <ProjectReference Include="..\PDFService.Services.Entity\PDFService.Services.Entity.csproj" />
+  </ItemGroup>
+</Project>

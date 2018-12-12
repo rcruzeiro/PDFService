@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  pdfservice.api:
+    image: ${DOCKER_REGISTRY-}pdfservice
+    build:
+      context: .
+      dockerfile: PDFService.API/Dockerfile
